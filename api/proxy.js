@@ -8,7 +8,20 @@ export default async function handler(req, res) {
 
     // Clone headers, add bypass
     const headers = new Headers();
+    const hopByHop = new Set([
+      "connection",
+      "keep-alive",
+      "proxy-authenticate",
+      "proxy-authorization",
+      "te",
+      "trailer",
+      "transfer-encoding",
+      "upgrade",
+      "host",
+      "content-length"
+    ]);
     for (const [k, v] of Object.entries(req.headers)) {
+      if (hopByHop.has(k.toLowerCase())) continue; // avoid forwarding hop-by-hop headers (ngrok rejects mismatched host)
       if (Array.isArray(v)) headers.set(k, v.join(", "));
       else if (typeof v === "string") headers.set(k, v);
     }
