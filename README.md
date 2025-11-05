@@ -1,4 +1,4 @@
-# Vercel Redirect-Only to ngrok
+# Vercel Proxy Redirect-Only to ngrok
 
 ## Feature
 自動加上必要的 HTTP 標頭來繞過 ngrok 免費版的警告頁面， 並同時支援 Message API / Webhook 回呼。
