@@ -14,9 +14,7 @@ export default async function handler(req, res) {
     }
 
     headers.set("ngrok-skip-browser-warning", "true");
-    // 保留或附加客戶端的 UA：若有則附加標記，沒有則設定預設 UA
-    /
-
+    
 
     const init = { method: req.method, headers, redirect: "manual" };
     if (req.method !== "GET" && req.method !== "HEAD") {
